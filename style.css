@@ -1,0 +1,379 @@
+/* =========================================================
+   1. PENGATURAN DASAR & VARIABEL WARNA
+========================================================= */
+:root {
+  --primary-color: #4A2E2B;    /* Cokelat gelap kopi (Header, Tombol utama) */
+  --secondary-color: #D4A373;  /* Cokelat muda (Aksen, tombol aktif) */
+  --bg-color: #F9F6F0;         /* Krem terang untuk background aplikasi */
+  --card-bg: #FFFFFF;          /* Putih bersih untuk kartu menu */
+  --text-dark: #333333;        /* Warna teks utama */
+  --text-light: #777777;       /* Warna teks sekunder (deskripsi) */
+  --success-color: #27AE60;    /* Hijau untuk tombol berhasil/WhatsApp */
+  --danger-color: #E74C3C;     /* Merah untuk tombol hapus/batal */
+  --radius: 12px;              /* Standar kelengkungan sudut (border-radius) */
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-dark);
+  /* Padding bawah agar konten tidak tertutup oleh keranjang melayang */
+  padding-bottom: 100px; 
+}
+
+/* =========================================================
+   2. HEADER & INFORMASI MEJA
+========================================================= */
+.app-header {
+  background-color: var(--card-bg);
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  position: sticky;
+  top: 0;
+  z-index: 50; /* Memastikan header selalu di atas konten lain saat di-scroll */
+}
+
+.brand-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand-icon {
+  font-size: 24px;
+  color: var(--primary-color);
+}
+
+.brand-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+.brand-subtitle {
+  font-size: 12px;
+  color: var(--text-light);
+}
+
+.table-badge {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: bold;
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+/* =========================================================
+   3. NAVIGASI KATEGORI
+========================================================= */
+.category-nav {
+  display: flex;
+  gap: 10px;
+  padding: 15px 20px;
+  overflow-x: auto; /* Bisa di-swipe ke samping (horizontal scroll) */
+  white-space: nowrap;
+  /* Menyembunyikan scrollbar agar terlihat rapi */
+  scrollbar-width: none; 
+}
+.category-nav::-webkit-scrollbar { display: none; }
+
+.category-btn {
+  background-color: var(--card-bg);
+  border: 1px solid #ddd;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+  color: var(--text-dark);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.category-btn.active {
+  background-color: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
+}
+
+/* =========================================================
+   4. KONTEN UTAMA & GRID MENU
+========================================================= */
+.container {
+  padding: 0 20px;
+}
+
+.search-box {
+  background-color: var(--card-bg);
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  border-radius: var(--radius);
+  margin-bottom: 20px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+  border: 1px solid #eee;
+}
+
+.search-box input {
+  border: none;
+  outline: none;
+  width: 100%;
+  margin-left: 10px;
+  font-size: 14px;
+}
+
+/* Grid untuk kartu menu, otomatis menyesuaikan ukuran layar */
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 kolom pada layar HP */
+  gap: 15px;
+}
+
+/* Desain Kartu Menu (Dibuat otomatis oleh JS nantinya) */
+.menu-card {
+  background-color: var(--card-bg);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  display: flex;
+  flex-direction: column;
+}
+
+.menu-img {
+  width: 100%;
+  height: 120px;
+  object-fit: cover; /* Agar gambar tidak gepeng */
+  background-color: #eee;
+}
+
+.menu-content {
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.menu-title {
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.menu-price {
+  color: var(--primary-color);
+  font-weight: bold;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.btn-add {
+  margin-top: auto;
+  background-color: var(--secondary-color);
+  color: white;
+  border: none;
+  padding: 8px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.btn-add:active { transform: scale(0.95); } /* Efek ditekan */
+
+/* =========================================================
+   5. FLOATING CART (KERANJANG MELAYANG BAWAH)
+========================================================= */
+.floating-cart {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 40px);
+  max-width: 400px; /* Batas lebar agar tidak terlalu besar di PC */
+  background-color: var(--primary-color);
+  color: white;
+  border-radius: 30px;
+  padding: 12px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 5px 15px rgba(74, 46, 43, 0.4);
+  z-index: 90;
+  transition: bottom 0.3s ease;
+}
+
+.cart-info { display: flex; align-items: center; gap: 15px; }
+
+.cart-icon-wrapper { position: relative; font-size: 20px; }
+
+.cart-badge {
+  position: absolute;
+  top: -8px;
+  right: -10px;
+  background-color: var(--danger-color);
+  color: white;
+  font-size: 10px;
+  font-weight: bold;
+  padding: 2px 6px;
+  border-radius: 10px;
+}
+
+.cart-price-preview { display: flex; flex-direction: column; }
+
+.cart-price-preview .label { font-size: 10px; opacity: 0.8; }
+.cart-price-preview .total-amount { font-size: 16px; font-weight: bold; }
+
+.btn-checkout-trigger {
+  background: white;
+  color: var(--primary-color);
+  border: none;
+  padding: 8px 15px;
+  border-radius: 20px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* =========================================================
+   6. MODAL & CHECKOUT (POP UP DARI BAWAH)
+========================================================= */
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 100;
+  display: flex;
+  align-items: flex-end; /* Memposisikan modal di bagian bawah (Bottom Sheet) */
+  justify-content: center;
+}
+
+.modal-content {
+  background: var(--bg-color);
+  width: 100%;
+  max-width: 500px;
+  max-height: 85vh; /* Maksimal tinggi 85% dari layar */
+  border-radius: 20px 20px 0 0;
+  overflow-y: auto; /* Bisa di-scroll jika isinya panjang */
+  padding: 20px;
+  animation: slideUp 0.3s ease forwards;
+}
+
+@keyframes slideUp {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 20px;
+  color: var(--text-dark);
+  cursor: pointer;
+}
+
+/* List Item di Keranjang */
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--card-bg);
+  padding: 10px;
+  border-radius: var(--radius);
+  margin-bottom: 10px;
+}
+.cart-item-info { flex-grow: 1; margin-right: 10px; }
+.cart-item-title { font-size: 14px; font-weight: bold; }
+.cart-item-price { font-size: 13px; color: var(--primary-color); }
+
+/* Tombol Plus Minus Qty */
+.qty-control {
+  display: flex; align-items: center; gap: 10px;
+}
+.qty-btn {
+  background: #eee; border: none; width: 25px; height: 25px;
+  border-radius: 5px; font-weight: bold; cursor: pointer;
+}
+
+/* =========================================================
+   7. FORMULIR & PEMBAYARAN
+========================================================= */
+.form-group { margin-bottom: 15px; }
+
+.form-group label {
+  display: block; font-size: 14px; font-weight: bold; margin-bottom: 8px;
+}
+
+.form-group input[type="text"], .form-group textarea {
+  width: 100%; padding: 12px; border: 1px solid #ddd;
+  border-radius: 8px; font-family: inherit; font-size: 14px;
+}
+
+.payment-options {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+}
+
+.payment-card {
+  border: 2px solid #ddd; border-radius: 8px; padding: 10px;
+  text-align: center; cursor: pointer; background: white;
+  transition: 0.2s;
+}
+
+/* Sembunyikan radio button asli */
+.payment-card input[type="radio"] { display: none; }
+
+/* Mengubah style saat radio button dipilih */
+.payment-card input[type="radio"]:checked + span {
+  color: var(--primary-color); font-weight: bold;
+}
+.payment-card:has(input[type="radio"]:checked) {
+  border-color: var(--primary-color); background-color: #fcf4ec;
+}
+
+.qris-container { text-align: center; margin-top: 15px; }
+.qris-img { width: 200px; height: 200px; border-radius: 10px; border: 1px solid #ccc; }
+.qris-instruction { font-size: 12px; color: var(--danger-color); margin-top: 5px; }
+
+.checkout-summary {
+  display: flex; justify-content: space-between; font-size: 18px;
+  border-top: 2px dashed #ccc; padding-top: 15px; margin-top: 15px; margin-bottom: 20px;
+}
+
+.btn-submit-order {
+  width: 100%; background-color: var(--success-color); color: white;
+  padding: 15px; border: none; border-radius: 12px; font-size: 16px;
+  font-weight: bold; cursor: pointer; display: flex; justify-content: center;
+  align-items: center; gap: 10px; box-shadow: 0 4px 10px rgba(39, 174, 96, 0.3);
+}
+
+/* =========================================================
+   8. KELAS UTILITAS & RESPONSIVITAS (DESKTOP)
+========================================================= */
+/* Utility untuk menyembunyikan elemen via JS */
+.hidden { display: none !important; }
+
+/* Menyesuaikan grid agar bagus jika dibuka di Tablet/Laptop */
+@media (min-width: 768px) {
+  .menu-grid { grid-template-columns: repeat(4, 1fr); }
+  .container { max-width: 800px; margin: 0 auto; }
+}
