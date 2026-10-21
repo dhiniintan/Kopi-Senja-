@@ -4,23 +4,23 @@
     "nama": "Es Kopi Susu Aren",
     "kategori": "minuman",
     "harga": 18000,
-    "gambar": "https://images.unsplash.com/photo-1559525839-b184a4d698c7?w=400",
-    "deskripsi": "Espresso dengan gula aren asli dan susu segar."
+    "gambar": "pict/kopi-aren.jpg",
+    "deskripsi": "Espresso dengan gula aren asli."
   },
   {
     "id": "kopi-02",
     "nama": "Americano Dingin",
     "kategori": "minuman",
     "harga": 15000,
-    "gambar": "https://images.unsplash.com/photo-1517701550927-30cf0ba8aad4?w=400",
-    "deskripsi": "Kopi hitam pekat dengan es batu."
+    "gambar": "pict/americano.jpg",
+    "deskripsi": "Kopi hitam pekat dingin."
   },
   {
     "id": "makanan-01",
     "nama": "Croissant Butter",
     "kategori": "makanan",
     "harga": 22000,
-    "gambar": "https://images.unsplash.com/photo-1555507036-ab1e4006aaeb?w=400",
-    "deskripsi": "Pastry renyah dengan aroma mentega premium."
+    "gambar": "pict/croissant.jpg",
+    "deskripsi": "Pastry renyah mentega premium."
   }
 ]
