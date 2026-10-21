@@ -231,7 +231,7 @@ checkoutForm.addEventListener('submit', (e) => {
   });
 
   // GANTI NOMOR INI DENGAN NOMOR WA KASIR/DAPUR (Gunakan format 62...)
-  const nomorWhatsApp = "6281234567890"; 
+  const nomorWhatsApp = "6283111778038"; 
 
   // Merangkai Format Pesan untuk WhatsApp
   const textMessage = 
