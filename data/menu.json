@@ -4,7 +4,7 @@
     "nama": "Es Kopi Susu Aren",
     "kategori": "minuman",
     "harga": 18000,
-    "gambar": "pict/kopi-aren.jpg",
+    "gambar": "pict/kopi-aren.jpeg",
     "deskripsi": "Espresso dengan gula aren asli."
   },
   {
@@ -12,7 +12,7 @@
     "nama": "Americano Dingin",
     "kategori": "minuman",
     "harga": 15000,
-    "gambar": "pict/americano.jpg",
+    "gambar": "pict/iced-americano.jpeg",
     "deskripsi": "Kopi hitam pekat dingin."
   },
   {
@@ -20,7 +20,7 @@
     "nama": "Croissant Butter",
     "kategori": "makanan",
     "harga": 22000,
-    "gambar": "pict/croissant.jpg",
+    "gambar": "pict/croissant.jpeg",
     "deskripsi": "Pastry renyah mentega premium."
   }
 ]
